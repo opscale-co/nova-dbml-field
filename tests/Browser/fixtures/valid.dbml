@@ -1,0 +1,13 @@
+Table users {
+  id integer [pk]
+  name varchar
+  email varchar [unique]
+}
+
+Table posts {
+  id integer [pk]
+  user_id integer
+  title varchar
+}
+
+Ref: posts.user_id > users.id

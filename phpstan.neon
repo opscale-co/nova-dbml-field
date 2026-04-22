@@ -1,0 +1,38 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/opscale-co/strict-rules/rules.clean.neon
+    - vendor/opscale-co/strict-rules/rules.ddd.neon
+    - vendor/opscale-co/strict-rules/rules.smells.neon
+    - vendor/opscale-co/strict-rules/rules.solid.neon
+
+parameters:
+    level: 8
+    phpVersion: 80300
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - src
+        - tests
+    excludePaths:
+        - tests/Browser/fixtures/*
+    ignoreErrors:
+        # Laravel service providers follow framework patterns that conflict with strict SOLID
+        -
+            message: '#.*#'
+            path: '*ServiceProvider.php'
+
+        # The field intentionally fully replaces fillAttributeFromRequest; parent's behavior
+        # does not handle UploadedFile, so calling parent:: would be wrong.
+        -
+            identifier: solid.lsp.parentCall
+            path: src/NovaDbmlField.php
+
+        # Tests are helpers-heavy and instantiate SUT directly
+        -
+            identifier: solid.dip.disallowInstantiation
+            path: tests/*
+        -
+            identifier: smells.helpersRestriction.helper
+            path: tests/*
+        -
+            identifier: solid.lsp.parentCall
+            path: tests/*

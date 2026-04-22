@@ -8,6 +8,10 @@
         "field"
     ],
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/opscale-co/nova-dbml-field/issues",
+        "source": "https://github.com/opscale-co/nova-dbml-field"
+    },
     "repositories": [
         {
             "type": "composer",
@@ -19,13 +23,56 @@
         "laravel/nova": "^5.0"
     },
     "require-dev": {
+        "larastan/larastan": "^3.9",
         "laravel/nova-devtool": "^1.7",
-        "laravel/pint": "^1.18"
+        "laravel/pint": "^1.18",
+        "mockery/mockery": "^1.6",
+        "opscale-co/strict-rules": "^1.1",
+        "orchestra/testbench-dusk": "^11.1",
+        "pestphp/pest": "^4.6",
+        "pestphp/pest-plugin-laravel": "^4.1",
+        "rector/rector": "^2.4",
+        "rector/rector-laravel": "^2.3",
+        "tightenco/duster": "^3.4"
     },
     "autoload": {
         "psr-4": {
             "Opscale\\NovaDbmlField\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Opscale\\NovaDbmlField\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@php vendor/bin/testbench workbench:build --ansi",
+            "@php vendor/bin/testbench db:seed --class=Workbench\\\\Database\\\\Seeders\\\\DatabaseSeeder --ansi",
+            "@sync-dusk-skeleton",
+            "@clear-views"
+        ],
+        "sync-dusk-skeleton": [
+            "cp -R vendor/orchestra/testbench-core/laravel/public/vendor vendor/orchestra/testbench-dusk/laravel/public/",
+            "cp vendor/orchestra/testbench-core/laravel/database/database.sqlite vendor/orchestra/testbench-dusk/laravel/database/database.sqlite"
+        ],
+        "clear-views": [
+            "rm -f vendor/orchestra/testbench-core/laravel/storage/framework/views/*.php",
+            "rm -f vendor/orchestra/testbench-dusk/laravel/storage/framework/views/*.php"
+        ],
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/testbench serve --ansi"
+        ]
+    },
+    "scripts-descriptions": {
+        "build": "Builds the workbench: SQLite DB, migrations, seeders, Nova assets, and syncs them into the Dusk skeleton for browser tests.",
+        "sync-dusk-skeleton": "Copies Nova public assets and the seeded SQLite DB from the testbench-core skeleton to the testbench-dusk skeleton.",
+        "clear-views": "Removes cached compiled Blade views from both testbench skeletons.",
+        "serve": "Boots the workbench Nova app at http://127.0.0.1:8000 (login: admin@laravel.com / password)."
     },
     "extra": {
         "laravel": {
@@ -35,7 +82,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

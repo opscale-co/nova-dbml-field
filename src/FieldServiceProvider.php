@@ -14,12 +14,13 @@ class FieldServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-dbml-field');
 
-        Nova::serving(function (ServingNova $event): void {
+        Nova::serving(function (ServingNova $servingNova): void {
             Nova::script('nova-dbml-field', __DIR__.'/../dist/js/field.js');
             Nova::style('nova-dbml-field', __DIR__.'/../dist/css/field.css');
         });
     }
 
+    #[\Override]
     public function register(): void
     {
         //

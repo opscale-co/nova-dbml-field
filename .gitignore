@@ -11,3 +11,11 @@ yarn-error.log
 .phpunit.result.cache
 .DS_Store
 .data/
+.husky/_/
+.claude/settings.local.json
+tests/Browser/screenshots/
+tests/Browser/console/
+phpstan-report.json
+coverage.xml
+.phpunit.cache
+.rector-cache
