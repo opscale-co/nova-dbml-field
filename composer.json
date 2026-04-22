@@ -1,0 +1,42 @@
+{
+    "name": "opscale-co/nova-dbml-field",
+    "description": "A Laravel Nova field for editing and visualizing DBML schemas.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "dbml",
+        "field"
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "laravel/nova": "^5.0"
+    },
+    "require-dev": {
+        "laravel/nova-devtool": "^1.7",
+        "laravel/pint": "^1.18"
+    },
+    "autoload": {
+        "psr-4": {
+            "Opscale\\NovaDbmlField\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Opscale\\NovaDbmlField\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

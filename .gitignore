@@ -1,0 +1,13 @@
+/.idea
+/.vscode
+/vendor
+/node_modules
+/dist
+composer.lock
+package-lock.json
+yarn.lock
+npm-debug.log
+yarn-error.log
+.phpunit.result.cache
+.DS_Store
+.data/
