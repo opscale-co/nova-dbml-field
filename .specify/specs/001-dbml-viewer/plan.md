@@ -12,12 +12,12 @@
 ```
 ┌────────────────────────────────────────────────────────────────┐
 │ Nova Resource (host app)                                       │
-│   fields(): [ NovaDbmlField::make('schema') ]                  │
+│   fields(): [ DBML::make('schema') ]                  │
 └──────────────────────────────────┬─────────────────────────────┘
                                    │  DBML string
                                    ▼
 ┌────────────────────────────────────────────────────────────────┐
-│ PHP — Opscale\NovaDbmlField\NovaDbmlField                      │
+│ PHP — Opscale\Fields\DBML                                      │
 │   - $component = 'nova-dbml-field'                             │
 │   - Visible on all views (Index, Detail, Create, Update)       │
 │   - fillAttribute: accepts UploadedFile OR raw string;         │
@@ -55,7 +55,7 @@ earlier results. Caching happens at the parser boundary keyed by the DBML string
 ```
 src/
 ├── FieldServiceProvider.php          (exists)
-└── NovaDbmlField.php                 (exists)
+└── DBML.php                 (exists)
 
 resources/
 ├── css/
@@ -87,9 +87,9 @@ event bus — state lives in the `DbmlViewer` component via `ref`/`reactive`.
 ### 3.1 PHP field API
 
 ```php
-use Opscale\NovaDbmlField\NovaDbmlField;
+use Opscale\Fields\DBML;
 
-NovaDbmlField::make('schema')
+DBML::make('schema')
     ->help('DBML schema — read-only interactive viewer.')
     ->hideFromIndex()                        // optional: user may hide index preview
     ->onlyOnDetail();                        // optional: restrict further
@@ -230,7 +230,7 @@ transitively — removing is premature optimization).
 
 ## 7. Testing Strategy (owned by opscale-test)
 
-- **Unit (Pest)** — PHP field serialization: `NovaDbmlField::jsonSerialize()`
+- **Unit (Pest)** — PHP field serialization: `DBML::jsonSerialize()`
   exposes the raw schema string and no more.
 - **JS unit (Vitest, if added)** — `parser.ts`, `graph.ts`, `layout.ts` with
   representative DBML fixtures (empty, one table, many refs, invalid syntax).

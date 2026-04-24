@@ -43,7 +43,7 @@ resulting ER diagram without leaving Nova or uploading the content elsewhere.
 - Validate uploaded DBML on the client **before submit** by running `@dbml/core`
   once — successful parse shows a green "schema ready" preview, failed parse
   blocks submit with the parser's error message.
-- Expose a minimal PHP API (`NovaDbmlField::make('schema')`) consistent with
+- Expose a minimal PHP API (`DBML::make('schema')`) consistent with
   Nova's field conventions.
 - Handle parse errors gracefully on Detail/Index: show a compact error banner
   with line/column and a raw-text fallback.
@@ -160,7 +160,7 @@ Vue Flow background pattern.
 
 A release of this field is acceptable when:
 
-1. A Nova Resource declaring `NovaDbmlField::make('schema')` renders a working
+1. A Nova Resource declaring `DBML::make('schema')` renders a working
    interactive diagram on Detail view given valid DBML in `schema`.
 2. Tables, columns, primary keys, unique constraints, nullability, defaults,
    notes, and refs from the DBML appear in the diagram.

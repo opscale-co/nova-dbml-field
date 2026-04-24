@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Opscale\NovaDbmlField\Tests;
+namespace Opscale\Fields\Tests;
 
 use Laravel\Dusk\Browser;
 use Orchestra\Testbench\Concerns\WithWorkbench;

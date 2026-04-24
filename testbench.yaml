@@ -4,7 +4,7 @@ providers:
   - Laravel\Nova\NovaServiceProvider
   - Laravel\Fortify\FortifyServiceProvider
   - Laravel\Dusk\DuskServiceProvider
-  - Opscale\NovaDbmlField\FieldServiceProvider
+  - Opscale\Fields\FieldServiceProvider
   - Workbench\App\Providers\WorkbenchServiceProvider
   - Workbench\App\Providers\NovaServiceProvider
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Opscale\NovaDbmlField\Tests\Browser;
+namespace Opscale\Fields\Tests\Browser;
 
 use Laravel\Dusk\Browser;
-use Opscale\NovaDbmlField\Tests\DuskTestCase;
+use Opscale\Fields\Tests\DuskTestCase;
 use PHPUnit\Framework\Attributes\Test;
 
 final class DbmlFieldTest extends DuskTestCase

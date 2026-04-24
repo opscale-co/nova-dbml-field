@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Opscale\NovaDbmlField;
+namespace Opscale\Fields;
 
 use Illuminate\Http\UploadedFile;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Override;
 
-class NovaDbmlField extends Field
+class DBML extends Field
 {
     public $component = 'nova-dbml-field';
 

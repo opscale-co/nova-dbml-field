@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 use Illuminate\Http\UploadedFile;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Opscale\NovaDbmlField\NovaDbmlField;
+use Opscale\Fields\DBML;
 
 it('registers the nova-dbml-field vue component', function (): void {
-    $field = NovaDbmlField::make('schema');
+    $field = DBML::make('schema');
 
     expect($field->component)->toBe('nova-dbml-field');
 });
 
 it('fills the attribute with a raw DBML string from the request', function (): void {
-    $field = NovaDbmlField::make('dbml');
+    $field = DBML::make('dbml');
     $model = new class
     {
         public ?string $dbml = null;
@@ -34,7 +34,7 @@ it('fills the attribute with the file contents when an UploadedFile is submitted
 
     $file = new UploadedFile($path, 'schema.dbml', 'text/plain', null, true);
 
-    $field = NovaDbmlField::make('dbml');
+    $field = DBML::make('dbml');
     $model = new class
     {
         public ?string $dbml = null;
@@ -50,7 +50,7 @@ it('fills the attribute with the file contents when an UploadedFile is submitted
 });
 
 it('writes null when the submitted value is null', function (): void {
-    $field = NovaDbmlField::make('dbml');
+    $field = DBML::make('dbml');
     $model = new class
     {
         public ?string $dbml = 'previous';
@@ -64,7 +64,7 @@ it('writes null when the submitted value is null', function (): void {
 });
 
 it('leaves the attribute untouched when the request does not include it', function (): void {
-    $field = NovaDbmlField::make('dbml');
+    $field = DBML::make('dbml');
     $model = new class
     {
         public ?string $dbml = 'keep-me';
@@ -77,7 +77,7 @@ it('leaves the attribute untouched when the request does not include it', functi
     expect($model->dbml)->toBe('keep-me');
 });
 
-function invokeFill(NovaDbmlField $field, NovaRequest $request, string $requestAttr, object $model, string $attr): void
+function invokeFill(DBML $field, NovaRequest $request, string $requestAttr, object $model, string $attr): void
 {
     $method = new ReflectionMethod($field, 'fillAttributeFromRequest');
     $method->invoke($field, $request, $requestAttr, $model, $attr);

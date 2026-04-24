@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Opscale\NovaDbmlField\Tests;
+namespace Opscale\Fields\Tests;
 
 use Laravel\Nova\NovaCoreServiceProvider;
 use Laravel\Nova\NovaServiceProvider;
-use Opscale\NovaDbmlField\FieldServiceProvider;
+use Opscale\Fields\FieldServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Override;
 

@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Opscale\\NovaDbmlField\\": "src/"
+            "Opscale\\Fields\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Opscale\\NovaDbmlField\\Tests\\": "tests/",
+            "Opscale\\Fields\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/",
             "Workbench\\Database\\Factories\\": "workbench/database/factories/",
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
@@ -77,7 +77,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Opscale\\NovaDbmlField\\FieldServiceProvider"
+                "Opscale\\Fields\\FieldServiceProvider"
             ]
         }
     },

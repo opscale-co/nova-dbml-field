@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
-use Opscale\NovaDbmlField\NovaDbmlField;
+use Opscale\Fields\DBML;
 
 class Schema extends Resource
 {
@@ -23,7 +23,7 @@ class Schema extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Name')->rules('required', 'max:255'),
-            NovaDbmlField::make('DBML', 'dbml')
+            DBML::make('DBML', 'dbml')
                 ->rules('required'),
         ];
     }

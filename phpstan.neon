@@ -24,7 +24,7 @@ parameters:
         # does not handle UploadedFile, so calling parent:: would be wrong.
         -
             identifier: solid.lsp.parentCall
-            path: src/NovaDbmlField.php
+            path: src/DBML.php
 
         # Tests are helpers-heavy and instantiate SUT directly
         -
